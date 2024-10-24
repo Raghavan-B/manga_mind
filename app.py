@@ -24,7 +24,7 @@ titles = data["title"].tolist()
 title = st.selectbox(label = "Select a manga you've read",options=titles,placeholder="One Piece")
 min_score = st.slider("Select the minimum score for the mangas to be recommended: ",min_value= 5.00,max_value=9.00,value= 7.00)
 
-top_n = 5
+top_n = 6
 # Custom CSS to increase button size
 st.markdown(
     """
