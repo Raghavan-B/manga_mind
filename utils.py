@@ -1,4 +1,5 @@
 import streamlit as st
+
 def recommend(manga_name,data,index,embeddings,min_score):
     manga_idx = data[data["title"] == manga_name].index[0]
     query_embedding = embeddings[manga_idx].reshape(1,-1)
@@ -24,11 +25,13 @@ def display_results(manga_df):
                 ##display the information in each column
                 with col:
                     genres = manga["genres"]
+                    title = manga["title"]
+                    synopsis = manga['synopsis']
                     authors = str(manga["authors"]).strip("[]")
-                    st.subheader(manga['title'])
+                    st.write(f"<h2>{title}",unsafe_allow_html=True)
                     with st.columns(3)[1]:
                         st.image(manga["image_url"],width = 150)
-                    st.write(f"Genres : {genres}")
-                    st.write(f"Synopsis : {manga['synopsis'][:-24]}")
-                    st.write(f"Authors : {authors}")
+                    st.write(f"<p>Genres : {genres}",unsafe_allow_html=True)
+                    st.write(f"<p>Synopsis : {synopsis}",unsafe_allow_html=True)
+                    st.write(f"<p>Authors : {authors}",unsafe_allow_html=True)
         st.write("--"*100)

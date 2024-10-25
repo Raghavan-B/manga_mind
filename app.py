@@ -3,11 +3,8 @@ import numpy as np
 import pandas as pd
 import faiss
 import warnings
-import base64
-from PIL import Image,ImageFilter
-
-warnings.filterwarnings("ignore")
 from utils import convert_genre_to_str,recommend,display_results
+warnings.filterwarnings("ignore")
 
 st.set_page_config(layout="wide")
 
@@ -18,7 +15,8 @@ index = faiss.read_index("models/faiss_index.bin")
 
 
 data["genres"] = data["genres"].apply(convert_genre_to_str)
-st.write('<h1 style = "color:black;">Manga Mind - An AI Based Recommender System',unsafe_allow_html=True)
+
+st.title('Manga Mind - An AI Based Recommender System')
 titles = data["title"].tolist()
 
 title = st.selectbox(label = "Select a manga you've read",options=titles,placeholder="One Piece")
